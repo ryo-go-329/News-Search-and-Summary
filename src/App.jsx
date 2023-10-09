@@ -3,8 +3,9 @@ import React from 'react'
 import Hero from './components/Hero';
 import Demo from './components/Demo';
 import News from './components/News';
-
+import Contact from './components/Contact';
 import './App.css';
+
 const App = () => {
   return (
     <main>
@@ -16,6 +17,7 @@ const App = () => {
         <Hero />
         <News />
         <Demo />
+        {/* <Contact /> */}
       </div>
     </main>
   )
