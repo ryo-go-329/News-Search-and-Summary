@@ -31,5 +31,7 @@ app.get('/articles', async (req,res) => {
         res.status(500).json({error:error.message})
     }
 })
-
+app.get('/',(req,res) => {
+  res.send("Hellow news search and summary api");
+})
 app.listen(PORT, () => {console.log('Server listening on port')});

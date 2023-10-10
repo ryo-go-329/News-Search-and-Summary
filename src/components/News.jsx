@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Clipboard from 'clipboard';
 import {copy} from '../assets';
 import Pagenation from './Pagenation';
 // const newsApiKey = import.meta.env.VITE_NEWS_API_KEY;
 
-const articles_test = [
-    {title: "Brave lays off 9% of its workforce",url: "https://techcrunch.com/2023/10/06/brave-lays-off-9-of-its-workforce/",publishedAt: "2023-10-07T12:11:21Z"},
-    {title: "Brave lays off 9% of its workforce",url: "https://techcrunch.com/2023/10/06/brave-lays-off-9-of-its-workforce/",publishedAt: "2023-10-07T12:11:21Z"},
-    {title: "Brave lays off 9% of its workforce",url: "https://techcrunch.com/2023/10/06/brave-lays-off-9-of-its-workforce/",publishedAt: "2023-10-07T12:11:21Z"},
-    {title: "How to Watch Taylor Swift, Travis Kelce at Kansas City Chiefs vs. New York Jets Tonight - CNET",url: "https://www.cnet.com/tech/services-and-software/how-to-watch-taylor-swift-travis-kelce-at-kansas-city-chiefs-vs-new-york-jets-tonight/",publishedAt: "2023-10-07T12:11:21Z"},
-];
+// const articles_test = [
+//     {title: "Brave lays off 9% of its workforce",url: "https://techcrunch.com/2023/10/06/brave-lays-off-9-of-its-workforce/",publishedAt: "2023-10-07T12:11:21Z"},
+//     {title: "Brave lays off 9% of its workforce",url: "https://techcrunch.com/2023/10/06/brave-lays-off-9-of-its-workforce/",publishedAt: "2023-10-07T12:11:21Z"},
+//     {title: "Brave lays off 9% of its workforce",url: "https://techcrunch.com/2023/10/06/brave-lays-off-9-of-its-workforce/",publishedAt: "2023-10-07T12:11:21Z"},
+//     {title: "How to Watch Taylor Swift, Travis Kelce at Kansas City Chiefs vs. New York Jets Tonight - CNET",url: "https://www.cnet.com/tech/services-and-software/how-to-watch-taylor-swift-travis-kelce-at-kansas-city-chiefs-vs-new-york-jets-tonight/",publishedAt: "2023-10-07T12:11:21Z"},
+// ];
 
 const News = () => {
     const [query,setQuery] = useState("");
@@ -18,32 +18,14 @@ const News = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         async function fetchArticles(){
-            const res = await fetch(`http://localhost:5000/articles?q=${query}`);
+            const res = await fetch(`https://news-search-and-summary-b59d7f88e823.herokuapp.com/articles?q=${query}`);
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             setArticles(data.articles);
         }
         await fetchArticles();
-        console.log(articles);
+        // console.log(articles);
     }
-    // const fetchArticles = async () => {
-    //     try{
-    //         const res = await fetch(`https://newsapi.org/v2/everything?q=${query}&apiKey=${newsApiKey}`);
-    //         const data = await res.json();
-    //         console.log(data);
-    //         setArticles(data.articles);
-            
-    //     } catch (error) {
-    //         console.log(error.message);
-    //         alert("記事の取得に失敗しました");
-    //     }
-    // }
-    // const fetchArticles = async () => {
-    //         const res = await fetch(`http://localhost:5000/articles?q=${query}`);
-    //         const data = await res.json();
-    //         console.log(data);
-    //         setArticles(data.articles);
-    // }
 
     const lastArticle = currentPage * 20;
     const firstArticle = lastArticle - 20;

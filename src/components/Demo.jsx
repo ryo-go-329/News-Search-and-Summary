@@ -44,7 +44,7 @@ const Demo = () => {
       setAllArticle(updateAllArticle);
 
       localStorage.setItem('article',JSON.stringify(updateAllArticle));
-      console.log(newArticle);
+      // console.log(newArticle);
     }
   };
   return (
